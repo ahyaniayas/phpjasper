@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69fde9f4-a8ad-445e-a2b6-edf758342970">
+	<property name="ireport.zoom" value="2.4836852922366295"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Pcabang" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Ptanggalfr" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Ptanggalto" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM tms.r_outs_invoice($P{Ptanggalfr},$P{Ptanggalto},$P{Pcabang});]]>
+	</queryString>
+	<field name="cabang" class="java.lang.String"/>
+	<field name="nama_principal" class="java.lang.String"/>
+	<field name="tgl_invoice" class="java.sql.Timestamp"/>
+	<field name="no_invoice" class="java.lang.String"/>
+	<field name="tgl_jatuh_tempo" class="java.sql.Timestamp"/>
+	<field name="no_kontrak" class="java.lang.String"/>
+	<field name="bank" class="java.lang.String"/>
+	<field name="fix_tarif" class="java.lang.Integer"/>
+	<field name="variable_tarif" class="java.lang.Integer"/>
+	<field name="extra_charge" class="java.lang.Integer"/>
+	<field name="biaya_bank" class="java.lang.Integer"/>
+	<variable name="sumqty" class="java.math.BigDecimal" resetType="Group" resetGroup="debarkasi" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sumukuran" class="java.math.BigDecimal" resetType="Group" resetGroup="tanggal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sumberat" class="java.math.BigDecimal" resetType="Group" resetGroup="tanggal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sumjumlah" class="java.math.BigDecimal" resetType="Group" resetGroup="debarkasi" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="tkp" class="java.lang.String">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="detail" class="java.lang.String"/>
+	<variable name="sumqty_1" class="java.math.BigDecimal" resetType="Group" resetGroup="tanggal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sumjumlah_1" class="java.math.BigDecimal" resetType="Group" resetGroup="tanggal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="tanggal" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="62">
+				<staticText>
+					<reportElement x="208" y="14" width="139" height="17" uuid="ee9c129a-b911-494d-a0b3-b239638ff521"/>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Daftar Tagihan per Principal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="0" width="166" height="14" uuid="e9581846-f785-40a3-adbc-60848e57d0e1"/>
+					<text><![CDATA[PT. SARANA BANDAR LOGISTIK]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="39" width="54" height="14" uuid="3fddc6a8-5b3c-491e-afca-363b27e6035a"/>
+					<text><![CDATA[Tgl. Invoice]]></text>
+				</staticText>
+				<textField pattern="dd-MM-yyyy">
+					<reportElement x="80" y="39" width="59" height="14" uuid="86fa9543-f8bd-43a1-87aa-0738c53de7fc"/>
+					<textFieldExpression><![CDATA[$P{Ptanggalfr}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="140" y="39" width="18" height="14" uuid="409a6302-fd46-464b-9df5-f0fcd6dcbed0"/>
+					<text><![CDATA[s/d]]></text>
+				</staticText>
+				<textField pattern="dd-MM-yyyy">
+					<reportElement x="158" y="39" width="71" height="14" uuid="b498440b-792a-4c95-a495-2f657c1e9a77"/>
+					<textFieldExpression><![CDATA[$P{Ptanggalto}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="19">
+				<line>
+					<reportElement x="2" y="2" width="542" height="1" uuid="9f682ca2-9671-41d3-a450-7a793941dc78"/>
+				</line>
+				<line>
+					<reportElement x="3" y="17" width="541" height="1" uuid="c559920b-d461-4d82-8284-4f75a90e4596"/>
+				</line>
+				<staticText>
+					<reportElement x="3" y="4" width="98" height="13" uuid="9d1a21a9-1f55-4dcb-8d47-446d7ca6e589"/>
+					<text><![CDATA[Principal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="121" y="4" width="59" height="13" uuid="d3b920b4-92c9-473f-8de2-1554d1710b69"/>
+					<text><![CDATA[Tgl. Invoice]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="192" y="4" width="76" height="13" uuid="1bd6fae2-da53-40a5-829d-abd45d98bb79"/>
+					<text><![CDATA[No. Invoice]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="279" y="4" width="83" height="13" uuid="7b44fc02-165f-4747-8c36-eee3a1e7252f"/>
+					<text><![CDATA[Tgl. Jatuh Tempo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="381" y="4" width="69" height="13" uuid="4e2e5f92-0d0b-476e-a30b-f61a14ab15b1"/>
+					<text><![CDATA[No. Kontrak]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="461" y="4" width="81" height="13" uuid="5384cdc4-5bc5-4f69-8463-460ecc89f795"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Jumlah]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<line>
+					<reportElement x="3" y="0" width="541" height="1" uuid="052e6296-d4ed-4b3b-bb1b-166932c7c6b4"/>
+				</line>
+				<staticText>
+					<reportElement x="3" y="1" width="54" height="13" uuid="6909ff3f-da82-4799-97d2-c583607acaf3"/>
+					<text><![CDATA[Grand Total]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="461" y="1" width="81" height="14" uuid="2f0dbda5-d967-4548-b44f-d0d1d025193d"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{fix_tarif}+$F{variable_tarif}+$F{extra_charge}+$F{biaya_bank}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="debarkasi">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupFooter>
+			<band height="26">
+				<line>
+					<reportElement x="3" y="1" width="541" height="1" uuid="90068691-0717-4888-b569-f57117a759e8"/>
+				</line>
+				<staticText>
+					<reportElement x="3" y="4" width="46" height="13" uuid="291c9d88-8300-4424-8118-b8d4804988c7"/>
+					<text><![CDATA[Sub Total]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="461" y="4" width="81" height="14" uuid="0a6f12e2-73f6-40a8-99bc-157f490813aa"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{fix_tarif}+$F{variable_tarif}+$F{extra_charge}+$F{biaya_bank}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="3" y="0" width="98" height="14" uuid="4e31a0ee-8720-474e-9a0a-a536d1a692cc"/>
+				<textFieldExpression><![CDATA[$F{nama_principal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="121" y="0" width="59" height="14" uuid="b7e843a7-57dc-4d24-bea8-0d65bb164815"/>
+				<textFieldExpression><![CDATA[$P{Ptanggalfr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="192" y="0" width="76" height="14" uuid="a4eccc3b-0af2-462a-b18f-aa2c8306b782"/>
+				<textFieldExpression><![CDATA[$F{no_invoice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="279" y="0" width="83" height="14" uuid="99332378-afe7-4669-878f-36430f576984"/>
+				<textFieldExpression><![CDATA[$F{tgl_jatuh_tempo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="381" y="0" width="69" height="14" uuid="a460d4fb-a184-4294-9506-c4a11626f716"/>
+				<textFieldExpression><![CDATA[$F{no_kontrak}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="461" y="0" width="81" height="14" uuid="45a85f46-10ff-4869-9ad7-f7ddaa2132e9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{fix_tarif}+$F{variable_tarif}+$F{extra_charge}+$F{biaya_bank}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<noData>
+		<band height="48">
+			<staticText>
+				<reportElement x="226" y="18" width="103" height="20" uuid="bc6a652f-8443-4d12-a144-ff041cc9830f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Data Tidak Ditemukan]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>
